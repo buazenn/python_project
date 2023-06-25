@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+html, body {
+    background-color: whitesmoke;
+    padding: 0;
+    margin: 0;
+    display: block;
+    font-family: 'Oswald', sans-serif;
+}
+
+.header_out{
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 30px black;
+    height: 180vh;
+    width: 30vh;
+    background-color: #99582a;
+    float: left;
+    text-transform: uppercase;
+    position: relative;
+}
+
+#home{
+    float:left;
+}
+
+a {
+    color: whitesmoke;
+    text-decoration: none;
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 0;
+}
+
+a:hover {
+    color: black;
+}
+
+#main_h1{
+    color: black;
+}
+
+#left_col,
+#right {
+    flex: 1;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+#log_in{
+    background-color: #99582a;
+    text-align: center;
+    margin: 10px auto;
+    padding: 20px;
+    max-width: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-25%, -50%);
+    text-transform: uppercase;
+}
+
+input[type="submit"] {
+    padding: 10px;
+    text-transform: uppercase;
+    background-color: #00000093;
+    color: whitesmoke;
+    border: none;
+    cursor: pointer;
+    font-style:italic;
+    font-family: 'Oswald', sans-serif;
+}
+
+.mess_info{
+    color:rgb(81, 3, 11);
+}
+#error_showup{
+      color:blueviolet;
+      font-style:italic
+    }
+
+#register_panel {
+    background-color: #99582a;
+    text-align: center;
+    margin: 10px auto;
+    padding: 20px;
+    max-width: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-25%, -50%);
+    text-transform: uppercase;
+}
+
+.hcontainer {
+    background-color: whitesmoke;
+    padding: 0;
+    margin: 0;
+    font-family: 'Oswald', sans-serif;
+    text-transform: lowercase;
+
+}
+
+#retirement {
+    background-color: pink;
+    width: 65%;
+    height: 15vh;
+    float: left;
+}
+
+#date_time {
+    height: 15vh;
+    width: 20.75%;
+    float: left;
+    overflow: hidden;
+    background-color: aqua;
+}
+    
+#personaldata {
+    background-color: rgb(7, 83, 116);
+    height: 80vh;
+    width: 20vw;
+    float: left;
+
+}
+  
+  #worked_time {
+    background-color: orange;
+    height: 80vh;
+    width: 44.80%;
+    float: left;
+  }
+  
+  #newscol {
+    background-color: rgb(87, 87, 88);
+    float: left;
+    width: 20.72%;
+    height: 80vh;
+  }
+  
+  #contri_bution {
+    background-color: rgb(160, 41, 130);
+    float: left;
+    width: 20vw;
+    height: 85vh;
+  }
+  
+  #stats_lab{
+    background-color: rgb(43, 167, 78);
+    float: left;
+    height: 85vh;
+    width: 65.51%;
+  }
+  
+.time_container {
+    display: grid;
+    grid-gap: 10px;
+    text-align: center;
+}
+
+.time {
+    font-size: 24px;
+    margin-bottom: 0;
+}
+
+.date {
+    font-size: 24px;
+}

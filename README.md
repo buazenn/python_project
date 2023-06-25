@@ -1,2 +1,2 @@
-# python_project
-Projekt na Studia
+# main_folder
+ Projekt Funduszy Emerytalnych

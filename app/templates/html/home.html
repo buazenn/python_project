@@ -1,0 +1,105 @@
+{% extends 'main_page.html' %}
+
+{% block content %}
+<div class="hcontainer">
+    
+    <div id="retirement">
+    Witaj, {{ user.username }}!
+    <p><h4> Prognoza Emerytury: {{ monthly_pension }}</h4></p>
+    </div>
+
+    <div id="date_time">
+
+        <div class="time_container">
+            <div class="time" id="time"></div>
+            <div class="date" id="date"></div>
+        </div>
+
+        <script>
+            function updateTime() {
+                var now = new Date();
+                var hours = now.getHours();
+                var minutes = now.getMinutes();
+                var seconds = now.getSeconds();
+                hours = hours < 10 ? "0" + hours : hours;
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+                var timeString = hours + ":" + minutes + ":" + seconds;
+                document.getElementById("time").textContent = timeString;
+                setTimeout(updateTime, 1000);
+            }
+            
+            function updateDate() {
+                var now = new Date();
+                var day = now.getDate();
+                var month = now.getMonth() + 1;
+                var year = now.getFullYear();
+                var dateString = day + "/" + month + "/" + year;
+                document.getElementById("date").textContent = dateString;
+            }
+            
+            updateTime();
+            updateDate();
+        </script>
+
+    </div>
+    <div id="personaldata">
+        <h2><center>Dane osobowe:</center></h2>
+    <ul>
+        <li><strong>Imię:</strong> {{ personal_data.user.first_name }}</li>
+        <li><strong>Nazwisko:</strong> {{ personal_data.user.last_name }}</li>
+        <li><strong>Email:</strong> {{ personal_data.user.email }}</li>
+        <li><strong>Adres:</strong> {{ personal_data.address }}</li>
+        <li><strong>Data urodzenia:</strong> {{ personal_data.birth_date }}</li>
+        <li><strong>Telefon:</strong> {{ personal_data.phone }}</li>
+        <li><strong>Płeć:</strong> {{ personal_data.gender }}</li>
+    </ul>
+    </div>
+    <div id="worked_time">
+        <h2><center>Przepracowany okres:</center></h2>
+        <ul>
+            {% for worked_time in worked_times %}
+                <li>
+                    <strong>Nazwa firmy:</strong> {{ worked_time.company_name }}<br>
+                    <strong>Okres zatrudnienia (miesiące):</strong> {{ worked_time.employment_period_months }}<br>
+                    <strong>Wynagrodzenie brutto:</strong> {{ worked_time.gross_salary }}<br>
+                    <strong>Składki:</strong> {{ worked_time.contribution_amount }}
+                </li>
+            {% endfor %}
+        </ul>
+
+        <h2><center>Lista prac:</center></h2>
+        <ul>
+            {% for worked in worked_list %}
+                <li>{{ worked.worked_time.company_name }}, {{worked.worked_time.employment_period_months }} miesięcy</li>
+            {% endfor %}
+        </ul>
+
+    </div>
+    <div id="newscol">
+        <h2><center>Wiadomości</center></h2>
+        <ul>
+            {% for new in news %}
+                <li>{{ new.content }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div id="contri_bution">
+        <h2><center>Składki</center></h2>
+    <ul>
+        {% for contribution in contributions %}
+            <li>Zwaloryzowany kapitał początkowy:<br> {{ contribution.initial_capital }}</li>
+            <br>Zwaloryzowane składki:<br> <li>{{ contribution.indexed_contributions }}</li>
+        {% endfor %}
+    </ul>
+    </div>
+    <div id="stats_lab">
+
+        {% load static %}
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <img src="{% static 'images/salary_chart.png' %}" alt="Obraz" width="80%" height="90%" style="transform: scale(0.8);">
+          </div>
+          
+    </div>
+</div>
+{% endblock content %}

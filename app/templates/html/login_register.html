@@ -1,0 +1,86 @@
+{% extends 'main_page.html' %}
+
+{% block content %}
+
+{% if page == 'login' %}
+
+
+<div id = "log_in">
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div class="form-group">
+        <label>Użytkownik:</label>
+        <input type="text" name="username" placeholder="Enter Username"/>
+        </div>
+
+        <div class="form-group">
+        <label>Hasło:</label>
+        <input type="password" name="password" placeholder="Enter Password"/>
+        </div>
+        <br>
+        <input type="submit" value="Zaloguj się"/>
+    </form><br>
+    <p>Zarejestruj się!</p>
+    <a href="{% url 'register' %}">Rejestracja</a>
+
+    <div class = "error_showup">
+        {% if messages %} 
+        {% for message in messages %}
+        <div id = "mess_info">
+            <br>
+            <center>{{ message }}</center>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+</div>
+
+{% else %}
+
+
+  <div id="register_panel">
+    <h3>Create your account!</h3>
+    <form method="post" action="">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="username" name="username" placeholder="Create A Username (use only letters and numbers)" Required>
+        </div>
+        <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter Your First Name" Required>
+        </div>
+        <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter Your Last Name" Required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email Address" Required>
+        </div>
+        <div class="form-group">
+            <label for="pass1">Password</label>
+            <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Create Your Password" Required>
+        </div>
+        <div class="form-group">
+            <label for="pass2">Confirm Password</label>
+            <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Confirm Your Password" Required>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+    </form>
+
+      <div class = "error_showup">
+          {% if messages %} <!-- Funkcja pokazujaca błędy -->
+        <ul class="messages">
+          {% for message in messages %}
+              <li>{{ message }}</li>
+          {% endfor %}
+    </ul>
+    {% endif %}
+      </div>
+  </div>
+
+{% endif %}
+
+{% endblock content %}
